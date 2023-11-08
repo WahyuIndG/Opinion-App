@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import NewCommentForm from './NewCommentForm';
 
-const NewCommentModal = ({ showModal, onCloseModal, post, actionThunk }) => {
+function NewCommentModal({ showModal, onCloseModal, post, actionThunk }) {
   const dispatch = useDispatch();
 
   const closeHandler = (e) => {
@@ -26,10 +28,14 @@ const NewCommentModal = ({ showModal, onCloseModal, post, actionThunk }) => {
     >
       <div className="w-[580px]">
         <h1 className="text-center mb-4 font-semibold">Reply Opinion</h1>
-        <NewCommentForm showModal={showModal} onSubmit={submitHandler} ownerName={post?.owner?.name} />
+        <NewCommentForm
+          showModal={showModal}
+          onSubmit={submitHandler}
+          ownerName={post?.owner?.name}
+        />
       </div>
     </aside>
   );
-};
+}
 
 export default NewCommentModal;

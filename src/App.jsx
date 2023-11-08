@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import HomePage from './pages/HomePage';
 import NavigationBar from './components/NavigationBar';
 import NewDiscussModal from './components/NewDiscussModal';
@@ -9,12 +10,11 @@ import ProfilePage from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import DetailPage from './pages/DetailPage';
-import { useDispatch, useSelector } from 'react-redux';
 import { setAuthUserAsyncThunk } from './states/authUser/action';
 import NotFoundPage from './pages/NotFoundPage';
 import Loading from './components/Loading';
 
-const App = () => {
+function App() {
   const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ const App = () => {
               <Route path="/search" element={<SearchPage />} />
               <Route path="/search/:userId" element={<ProfilePage self={false} />} />
               <Route path="/leaderboard" element={<LeaderboardPage />} />
-              {authUser && <Route path="/profile" element={<ProfilePage self={true} />} />}
+              {authUser && <Route path="/profile" element={<ProfilePage self />} />}
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="*" element={<NotFoundPage />} />
@@ -59,6 +59,6 @@ const App = () => {
       </div>
     </>
   );
-};
+}
 
 export default App;

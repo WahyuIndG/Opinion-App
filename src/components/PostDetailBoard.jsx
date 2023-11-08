@@ -1,12 +1,15 @@
-import timeAgo from '../utils/dateFormatter';
 import parser from 'html-react-parser';
 import { BiLike, BiSolidLike, BiDislike, BiSolidDislike } from 'react-icons/bi';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDownVotePostDetailAsyncThunk, toggleUpVotePostDetailAsyncThunk } from '../states/postDetail/action';
+import timeAgo from '../utils/dateFormatter';
+import {
+  toggleDownVotePostDetailAsyncThunk,
+  toggleUpVotePostDetailAsyncThunk,
+} from '../states/postDetail/action';
 
-const PostDetailBoard = ({ postDetail }) => {
+function PostDetailBoard({ postDetail }) {
   const { authUser } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -81,6 +84,6 @@ const PostDetailBoard = ({ postDetail }) => {
       </footer>
     </div>
   );
-};
+}
 
 export default PostDetailBoard;

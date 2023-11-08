@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React from 'react';
 import { IoIosSend } from 'react-icons/io';
-import Avatar from '../../Public/Images/myavatar.png';
 import { useSelector } from 'react-redux';
+import Avatar from '../../Public/Images/myavatar.png';
 
-const OpenModalButton = ({ buttonText, children, onButtonClicked }) => {
+function OpenModalButton({ buttonText, children, onButtonClicked }) {
   const { authUser } = useSelector((state) => state);
 
   const onKeyPressHandler = (e) => {
@@ -15,7 +17,11 @@ const OpenModalButton = ({ buttonText, children, onButtonClicked }) => {
 
   return (
     <div className="flex justify-between py-[14px] gap-[12px] border-b border-dkinactive">
-      <img className="w-[38px] h-[38px] rounded-full " src={authUser ? authUser.avatar : Avatar} />
+      <img
+        className="w-[38px] h-[38px] rounded-full "
+        src={authUser ? authUser.avatar : Avatar}
+        alt="avatar"
+      />
       <div className="flex-grow flex items-center text-dkinactive ">
         <p
           className="flex-grow h-full flex items-center rounded-2xl text-sm bg-transparent cursor-text"
@@ -31,6 +37,6 @@ const OpenModalButton = ({ buttonText, children, onButtonClicked }) => {
       </div>
     </div>
   );
-};
+}
 
 export default OpenModalButton;

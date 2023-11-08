@@ -35,7 +35,7 @@ export function createPostActionCreator(post) {
 }
 
 export function createPostAsyncThunk(post) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch(showLoading());
 
     try {
@@ -69,7 +69,7 @@ export function toggleUpVoteAsyncThunk(postId) {
     if (isUpVotedPost) {
       const upVotesBy = post.upVotesBy.filter((userId) => userId !== authUser.id);
       const newPosts = posts.map((post) => {
-        if (post.id == postId) {
+        if (post.id === postId) {
           return { ...post, upVotesBy };
         }
         return post;
@@ -140,7 +140,7 @@ export function toggleDownVoteAsyncThunk(postId) {
     if (isDownVotedPost) {
       const downVotesBy = post.downVotesBy.filter((userId) => userId !== authUser.id);
       const newPosts = posts.map((post) => {
-        if (post.id == postId) {
+        if (post.id === postId) {
           return { ...post, downVotesBy };
         }
         return post;
@@ -163,7 +163,7 @@ export function toggleDownVoteAsyncThunk(postId) {
         const upVotesBy = post.upVotesBy.filter((userId) => userId !== authUser.id);
         const downVotesBy = [...post.downVotesBy, authUser.id];
         const newPosts = posts.map((post) => {
-          if (post.id == postId) {
+          if (post.id === postId) {
             return { ...post, upVotesBy, downVotesBy };
           }
           return post;

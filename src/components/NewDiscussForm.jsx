@@ -3,7 +3,7 @@ import { IoIosSend } from 'react-icons/io';
 
 import useInput from '../hooks/useInput';
 
-const NewDiscussForm = ({ showModal, onSubmit }) => {
+function NewDiscussForm({ showModal, onSubmit }) {
   const [title, setTitle, resetTitle] = useInput('');
   const [category, setCategory, resetCategory] = useInput('');
   const [body, setBody] = useState('');
@@ -66,14 +66,17 @@ const NewDiscussForm = ({ showModal, onSubmit }) => {
         placeholder="Untitled"
         className="bg-transparent outline-none focus:placeholder:text-[#717070] placeholder:text-dkinactive placeholder:text-3xl text-3xl placeholder:font-semibold font-semibold"
       />
-      <label htmlFor="category" className={`text-sm mt-1 ${focus ? 'text-inherit' : 'text-dkinactive'}`}>
+      <label
+        htmlFor="category"
+        className={`text-sm mt-1 ${focus ? 'text-inherit' : 'text-dkinactive'}`}
+      >
         #
         <input
           id="category"
           value={category}
           onChange={setCategory}
           onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(category === '' ? false : true)}
+          onBlur={() => setFocus(category !== '')}
           type="text"
           placeholder="tag"
           className="bg-transparent outline-none focus:placeholder:text-[#717070] placeholder:text-dkinactive "
@@ -87,7 +90,7 @@ const NewDiscussForm = ({ showModal, onSubmit }) => {
         contentEditable
         onInput={bodyChangeHandler}
         onKeyDown={enterHandler}
-      ></div>
+      />
       <div className="flex mt-8">
         <button
           type="submit"
@@ -100,6 +103,6 @@ const NewDiscussForm = ({ showModal, onSubmit }) => {
       </div>
     </form>
   );
-};
+}
 
 export default NewDiscussForm;

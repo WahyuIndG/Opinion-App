@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import TagDropdown from '../components/TagDropdown';
 import PostList from '../components/PostList';
 import NewCommentModal from '../components/NewCommentModal';
 import OpenModalButton from '../components/OpenModalButton';
-import { useDispatch, useSelector } from 'react-redux';
 import { populatePostsAndUsers } from '../states/shared/action';
-import { useNavigate } from 'react-router-dom';
 import { addCommentPostAsyncThunk } from '../states/posts/action';
 
-const HomePage = ({ toggleDiscussModal }) => {
+function HomePage({ toggleDiscussModal }) {
   const [category, setCategory] = useState('');
   const [post, setPost] = useState();
   const [showCommentModal, setShowCommentModal] = useState(false);
@@ -39,18 +39,21 @@ const HomePage = ({ toggleDiscussModal }) => {
       return navigate('/login');
     }
 
-    post ? setPost(post) : setPost(null);
+    if (post) {
+      setPost(post);
+    } else {
+      setPost(null);
+    }
     setShowCommentModal((prev) => !prev);
   };
 
-  const getCategroies = () => {
-    return posts.reduce((accumulator, post) => {
+  const getCategroies = () =>
+    posts.reduce((accumulator, post) => {
       if (!accumulator.includes(post.category.toLowerCase())) {
         accumulator.push(post.category.toLowerCase());
       }
       return accumulator;
     }, []);
-  };
 
   return (
     <div>
@@ -67,6 +70,6 @@ const HomePage = ({ toggleDiscussModal }) => {
       <TagDropdown categories={getCategroies()} selectHandler={selectHandler} selected={category} />
     </div>
   );
-};
+}
 
 export default HomePage;

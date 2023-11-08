@@ -1,26 +1,26 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { BiLike, BiSolidLike, BiDislike, BiSolidDislike } from 'react-icons/bi';
 import parser from 'html-react-parser';
 import { FaRegCommentDots } from 'react-icons/fa';
-import timeAgo from '../utils/dateFormatter';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import timeAgo from '../utils/dateFormatter';
 import { toggleDownVoteAsyncThunk, toggleUpVoteAsyncThunk } from '../states/posts/action';
 
-const Post = ({
+function Post({
   id,
   title,
   body,
   category,
   createdAt,
-  ownerId,
   owner,
   authUser,
   upVotesBy,
   downVotesBy,
   totalComments,
   onOpenCommentModal,
-}) => {
+}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -115,6 +115,6 @@ const Post = ({
       </section>
     </div>
   );
-};
+}
 
 export default Post;

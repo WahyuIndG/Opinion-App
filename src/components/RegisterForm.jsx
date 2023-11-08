@@ -1,11 +1,11 @@
 import { FiMail, FiLock, FiAtSign } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
-import FormInput from '../components/FormInput';
-import useInput from '../hooks/useInput';
 import { useDispatch } from 'react-redux';
+import FormInput from './FormInput';
+import useInput from '../hooks/useInput';
 import { registerUserAsyncThunk } from '../states/users/action';
 
-const RegisterForm = () => {
+function RegisterForm() {
   const [name, setName] = useInput('');
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
@@ -25,16 +25,30 @@ const RegisterForm = () => {
       className="w-fit p-7 px-10 border-[2px] border-[rgba(121,121,121,0.26)] rounded-2xl flex flex-col items-center gap-4"
     >
       <h1 className="text-3xl font-semibold mb-2">Register</h1>
-      <FormInput type={'name'} icon={<FiAtSign />} placeholder={'john_doe'} value={name} setValue={setName} />
-      <FormInput type={'email'} icon={<FiMail />} placeholder={'john@sample.com'} value={email} setValue={setEmail} />
       <FormInput
-        type={'password'}
+        type="name"
+        icon={<FiAtSign />}
+        placeholder="john_doe"
+        value={name}
+        setValue={setName}
+      />
+      <FormInput
+        type="email"
+        icon={<FiMail />}
+        placeholder="john@sample.com"
+        value={email}
+        setValue={setEmail}
+      />
+      <FormInput
+        type="password"
         icon={<FiLock />}
-        placeholder={'at least 6 character'}
+        placeholder="at least 6 character"
         value={password}
         setValue={setPassword}
       />
-      <button className="bg-dkText text-dkBackground py-2 px-6 text-lg font-bold rounded-full mt-3">Sign Up</button>
+      <button className="bg-dkText text-dkBackground py-2 px-6 text-lg font-bold rounded-full mt-3">
+        Sign Up
+      </button>
       <span className="text-xs text-dkinactive mt-1">
         Already have an account ?{' '}
         <Link to="/login" className="text-dkText">
@@ -43,6 +57,6 @@ const RegisterForm = () => {
       </span>
     </form>
   );
-};
+}
 
 export default RegisterForm;

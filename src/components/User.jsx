@@ -2,7 +2,7 @@ import React from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
-const User = ({ id, name, email, avatar }) => {
+function User({ id, name, email, avatar }) {
   return (
     <Link to={`/search/${id}`} className="flex gap-6 border-b-[1px] border-dkinactive py-6">
       <img src={avatar} alt="user" className="w-16 h-16 rounded-full" />
@@ -17,6 +17,6 @@ const User = ({ id, name, email, avatar }) => {
       </div>
     </Link>
   );
-};
+}
 
 export default User;

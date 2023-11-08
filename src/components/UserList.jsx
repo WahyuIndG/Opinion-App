@@ -1,15 +1,15 @@
 import User from './User';
 
-const UserList = ({ users }) => {
+function UserList({ users }) {
   return (
     <ul>
       {users.map((user) => (
-        <li key={user.id} tabIndex={0}>
+        <li key={user.id}>
           <User {...user} />
         </li>
       ))}
     </ul>
   );
-};
+}
 
 export default UserList;

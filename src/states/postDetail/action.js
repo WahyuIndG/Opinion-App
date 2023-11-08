@@ -146,7 +146,7 @@ export function toggleDownVotePostDetailAsyncThunk() {
 }
 
 export function addCommentPostDetailAsyncThunk(postId, content) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch(showLoading());
     try {
       const response = await axios.post(`/threads/${postId}/comments`, JSON.stringify({ content }), {

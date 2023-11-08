@@ -25,7 +25,7 @@ export function unsetAuthUserActionCreator() {
 }
 
 export function setAuthUserAsyncThunk(credentials = {}) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch(showLoading());
 
     try {

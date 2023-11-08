@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import CommentList from '../components/CommentList';
-import NewCommentModal from '../components/NewCommentModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import CommentList from '../components/CommentList';
+import NewCommentModal from '../components/NewCommentModal';
 import OpenModalButton from '../components/OpenModalButton';
 import { addCommentPostDetailAsyncThunk, receivePostDetailAsyncThunk } from '../states/postDetail/action';
 import PostDetailBoard from '../components/PostDetailBoard';
 
-const DetailPage = () => {
+function DetailPage() {
   const [commentModal, setCommentModal] = useState();
 
   const { postId } = useParams();
@@ -36,10 +36,9 @@ const DetailPage = () => {
     <>
       <PostDetailBoard postDetail={postDetail} />
 
-      <OpenModalButton
-        onButtonClicked={openCommentModal}
-        buttonText="Reply"
-      >{`Reply to ${postDetail?.owner?.name}`}</OpenModalButton>
+      <OpenModalButton onButtonClicked={openCommentModal} buttonText="Reply">
+        {`Reply to ${postDetail?.owner?.name}`}
+      </OpenModalButton>
 
       <CommentList comments={postDetail?.comments || []} />
 
@@ -51,6 +50,6 @@ const DetailPage = () => {
       />
     </>
   );
-};
+}
 
 export default DetailPage;

@@ -1,6 +1,6 @@
 import { ActionType } from './action';
 
-const postDetail = (postDetail = null, action = {}) => {
+const postDetailReducer = (postDetail = null, action = {}) => {
   switch (action.type) {
     case ActionType.RECEIVE_POST_DETAIL:
       return action.payload.postDetail;
@@ -15,4 +15,4 @@ const postDetail = (postDetail = null, action = {}) => {
   }
 };
 
-export default postDetail;
+export default postDetailReducer;

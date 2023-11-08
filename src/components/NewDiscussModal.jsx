@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch } from 'react-redux';
 import { createPostAsyncThunk } from '../states/posts/action';
 import NewDiscussForm from './NewDiscussForm';
 
-const NewDiscussModal = ({ showModal, onClose }) => {
+function NewDiscussModal({ showModal, onClose }) {
   const dispatch = useDispatch();
 
   const overlayClickedHandler = (e) => {
@@ -30,6 +31,6 @@ const NewDiscussModal = ({ showModal, onClose }) => {
       </div>
     </div>
   );
-};
+}
 
 export default NewDiscussModal;

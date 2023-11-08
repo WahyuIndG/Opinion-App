@@ -1,11 +1,14 @@
 import React from 'react';
 import parser from 'html-react-parser';
 import { BiLike, BiSolidLike, BiDislike, BiSolidDislike } from 'react-icons/bi';
-import timeAgo from '../utils/dateFormatter';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDownVoteCommentAsyncThunk, toggleUpVoteCommentAsyncThunk } from '../states/postDetail/action';
+import timeAgo from '../utils/dateFormatter';
+import {
+  toggleDownVoteCommentAsyncThunk,
+  toggleUpVoteCommentAsyncThunk,
+} from '../states/postDetail/action';
 
-const Comment = ({ id, content, owner, upVotesBy, downVotesBy, createdAt }) => {
+function Comment({ id, content, owner, upVotesBy, downVotesBy, createdAt }) {
   const { authUser } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -24,7 +27,12 @@ const Comment = ({ id, content, owner, upVotesBy, downVotesBy, createdAt }) => {
   return (
     <div className="flex justify-start pt-[14px] pb-[20px] gap-[12px] border-b border-dkinactive">
       <div className="w-[38px]">
-        <img className="w-[38px] h-[38px] rounded-full" src={owner?.avatar} alt="avatar" title="image" />
+        <img
+          className="w-[38px] h-[38px] rounded-full"
+          src={owner?.avatar}
+          alt="avatar"
+          title="image"
+        />
       </div>
 
       <section className="flex-grow flex flex-col">
@@ -66,6 +74,6 @@ const Comment = ({ id, content, owner, upVotesBy, downVotesBy, createdAt }) => {
       </section>
     </div>
   );
-};
+}
 
 export default Comment;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { receiveLeaderboardsAsyncThunk } from '../states/leaderboards/action';
 import LeaderboardList from '../components/LeaderboardList';
 
-const LeaderboardPage = () => {
+function LeaderboardPage() {
   const dispatch = useDispatch();
   const { leaderboards } = useSelector((state) => state);
 
@@ -12,6 +12,6 @@ const LeaderboardPage = () => {
   }, [dispatch]);
 
   return <LeaderboardList leaderboards={leaderboards} />;
-};
+}
 
 export default LeaderboardPage;

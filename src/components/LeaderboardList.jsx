@@ -1,7 +1,9 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import Leaderboard from './Leaderboard';
 
-const LeaderboardList = ({ leaderboards }) => {
+function LeaderboardList({ leaderboards }) {
   return (
     <ul className="py-5">
       {leaderboards.map((leaderboard, i) => (
@@ -11,6 +13,6 @@ const LeaderboardList = ({ leaderboards }) => {
       ))}
     </ul>
   );
-};
+}
 
 export default LeaderboardList;

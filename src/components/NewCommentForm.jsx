@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { IoIosSend } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 
-const NewCommentForm = ({ onSubmit, showModal, ownerName }) => {
+function NewCommentForm({ onSubmit, showModal, ownerName }) {
   const [body, setBody] = useState('');
   const { authUser } = useSelector((state) => state);
 
@@ -48,7 +48,7 @@ const NewCommentForm = ({ onSubmit, showModal, ownerName }) => {
       className="bg-[#181818] rounded-2xl border-[1.25px] border-dkinactive p-6 flex flex-col"
     >
       <div className="flex items-center gap-3">
-        <img className="w-[32px] h-[32px] rounded-full" src={authUser?.avatar} />
+        <img className="w-[32px] h-[32px] rounded-full" src={authUser?.avatar} alt="avatar" />
         <h1 className="text-sm font-medium">{authUser?.name}</h1>
       </div>
       <div
@@ -71,6 +71,6 @@ const NewCommentForm = ({ onSubmit, showModal, ownerName }) => {
       </div>
     </form>
   );
-};
+}
 
 export default NewCommentForm;

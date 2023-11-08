@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 
-const PostList = ({ onOpenCommentModal, posts }) => {
+function PostList({ onOpenCommentModal, posts }) {
   return (
     <ul className="pb-32">
       {posts.map((post) => (
@@ -11,6 +11,6 @@ const PostList = ({ onOpenCommentModal, posts }) => {
       ))}
     </ul>
   );
-};
+}
 
 export default PostList;
