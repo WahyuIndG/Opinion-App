@@ -56,17 +56,6 @@
   text-overflow: ellipsis;
 }
 
-/* helper */
-
-body::before {
-  content: 'XS';
-  color: red;
-  font-size: 2rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
 [contentEditable][data-placeholder]:empty:before {
   content: attr(data-placeholder);
   color: #545454;
@@ -74,55 +63,4 @@ body::before {
 
 [contentEditable][data-placeholder]:focus::before {
   color: #717070;
-}
-
-@media (min-width: 640px) {
-  body::before {
-    content: 'SM';
-    color: red;
-    font-size: 2rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
-}
-@media (min-width: 768px) {
-  body::before {
-    content: 'MD';
-    color: red;
-    font-size: 2rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
-}
-@media (min-width: 1024px) {
-  body::before {
-    content: 'LG';
-    color: red;
-    font-size: 2rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
-}
-@media (min-width: 1280px) {
-  body::before {
-    content: 'XL';
-    color: red;
-    font-size: 2rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
-}
-@media (min-width: 1536px) {
-  body::before {
-    content: '2XL';
-    color: red;
-    font-size: 2rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
 }
