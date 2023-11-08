@@ -10,7 +10,7 @@ function SearchPage() {
   const [keyword, setKeyword, resetKeyword] = useInput('');
 
   const dispatch = useDispatch();
-  const { users } = useSelector((state) => state);
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     if (users.length === 0) {

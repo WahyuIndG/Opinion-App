@@ -10,7 +10,7 @@ import {
 } from '../states/postDetail/action';
 
 function PostDetailBoard({ postDetail }) {
-  const { authUser } = useSelector((state) => state);
+  const authUser = useSelector((state) => state.authUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

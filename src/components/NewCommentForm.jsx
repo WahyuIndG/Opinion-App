@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 function NewCommentForm({ onSubmit, showModal, ownerName }) {
   const [body, setBody] = useState('');
-  const { authUser } = useSelector((state) => state);
+  const authUser = useSelector((state) => state.authUser);
 
   const bodyRef = useRef();
   const formRef = useRef();

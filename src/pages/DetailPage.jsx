@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import CommentList from '../components/CommentList';
 import NewCommentModal from '../components/NewCommentModal';
 import OpenModalButton from '../components/OpenModalButton';
-import { addCommentPostDetailAsyncThunk, receivePostDetailAsyncThunk } from '../states/postDetail/action';
+import {
+  addCommentPostDetailAsyncThunk,
+  receivePostDetailAsyncThunk,
+} from '../states/postDetail/action';
 import PostDetailBoard from '../components/PostDetailBoard';
 
 function DetailPage() {
@@ -13,7 +16,8 @@ function DetailPage() {
   const { postId } = useParams();
   const navigate = useNavigate();
 
-  const { postDetail, authUser } = useSelector((state) => state);
+  const authUser = useSelector((state) => state.authUser);
+  const postDetail = useSelector((state) => state.postDetail);
   const dispatch = useDispatch();
 
   useEffect(() => {

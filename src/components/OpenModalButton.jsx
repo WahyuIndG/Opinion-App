@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Avatar from '../../Public/Images/myavatar.png';
 
 function OpenModalButton({ buttonText, children, onButtonClicked }) {
-  const { authUser } = useSelector((state) => state);
+  const authUser = useSelector((state) => state.authUser);
 
   const onKeyPressHandler = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -16,7 +16,7 @@ function OpenModalButton({ buttonText, children, onButtonClicked }) {
   };
 
   return (
-    <div className="flex justify-between py-[14px] gap-[12px] border-b border-dkinactive">
+    <div className="flex justify-between py-[14px] gap-[12px] border-b border-[rgba(84,84,84,0.50)]">
       <img
         className="w-[38px] h-[38px] rounded-full "
         src={authUser ? authUser.avatar : Avatar}

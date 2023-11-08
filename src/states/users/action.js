@@ -27,7 +27,7 @@ export function registerUserAsyncThunk(user) {
       });
 
       const credentials = {
-        email: responseRegister.data.data.user,
+        email: responseRegister.data.data.user.email,
         password: user.password,
       };
 

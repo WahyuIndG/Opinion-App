@@ -7,8 +7,6 @@ export function populatePostsAndUsers() {
   return async (dispatch) => {
     dispatch(showLoading());
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     try {
       const responseUsers = await axios.get('/users');
       const responsePosts = await axios.get('/threads');

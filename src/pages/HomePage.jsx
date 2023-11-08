@@ -16,7 +16,9 @@ function HomePage({ toggleDiscussModal }) {
 
   const navigate = useNavigate();
 
-  const { posts, users, authUser } = useSelector((state) => state);
+  const posts = useSelector((state) => state.posts);
+  const users = useSelector((state) => state.users);
+  const authUser = useSelector((state) => state.authUser);
   const dispatch = useDispatch();
 
   const postList = posts.map((post) => ({
@@ -57,9 +59,11 @@ function HomePage({ toggleDiscussModal }) {
 
   return (
     <div>
-      <OpenModalButton buttonText="Post" onButtonClicked={toggleDiscussModal}>
-        Launch to argue...
-      </OpenModalButton>
+      <div className="max-[968px]:hidden block">
+        <OpenModalButton buttonText="Post" onButtonClicked={toggleDiscussModal}>
+          Launch to argue...
+        </OpenModalButton>
+      </div>
       <PostList posts={filterPost()} onOpenCommentModal={toggleCommentModal} />
       <NewCommentModal
         showModal={showCommentModal}

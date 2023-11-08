@@ -5,7 +5,7 @@ import LeaderboardList from '../components/LeaderboardList';
 
 function LeaderboardPage() {
   const dispatch = useDispatch();
-  const { leaderboards } = useSelector((state) => state);
+  const leaderboards = useSelector((state) => state.leaderboards);
 
   useEffect(() => {
     dispatch(receiveLeaderboardsAsyncThunk());

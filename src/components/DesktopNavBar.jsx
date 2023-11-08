@@ -4,13 +4,17 @@ import { BiArrowBack } from 'react-icons/bi';
 import { FaSignInAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { TfiGithub } from 'react-icons/tfi';
+import { useEffect, useState } from 'react';
 import dkLogo from '../../Public/Images/dkLogo.png';
+import dkLogoOnly from '../../Public/Images/dkLogoOnly.png';
 
-function NavigationBar({ toggleDiscussModal }) {
+function DesktopNavbar({ toggleDiscussModal }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { authUser } = useSelector((states) => states);
+  const authUser = useSelector((states) => states.authUser);
   const active = location.pathname;
+
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
   const showBackButton = location.pathname.split('/').length === 3;
 
@@ -18,15 +22,26 @@ function NavigationBar({ toggleDiscussModal }) {
     navigate(-1);
   };
 
-  return (
-    <nav className="max-w-7xl m-auto px-4 flex justify-between items-center p-1">
-      <img src={dkLogo} alt="Opinion Logo" className="h-8" />
+  const updateViewportWidth = () => {
+    setViewportWidth(window.innerWidth);
+  };
 
-      <div className="flex relative w-[570px] -ml-11 overflow-hidden">
+  useEffect(() => {
+    window.addEventListener('resize', updateViewportWidth);
+    return () => {
+      window.removeEventListener('resize', updateViewportWidth);
+    };
+  }, []);
+
+  return (
+    <nav className="md:flex hidden justify-between items-center max-w-7xl m-auto max-[968px]:px-6 px-9 py-1  bg-[rgba(16,16,16,0.8)] backdrop-blur-md">
+      <img src={viewportWidth <= 968 ? dkLogoOnly : dkLogo} alt="Opinion Logo" className="h-8" />
+
+      <div className="flex relative max-[968px]:w-[500px] w-[570px] max-[968px]:-ml-0 -ml-16 overflow-hidden ">
         <div
           className={`${
             showBackButton ? 'visible left-0 opacity-100' : 'visible -left-10 opacity-0'
-          } top-0  absolute h-full grid place-items-center transition-all duration-300`}
+          } top-0  absolute h-full grid place-items-center transition-all duration-150`}
         >
           <button
             className="grid place-items-center hover:bg-[#1c1c1c] p-3 rounded-full"
@@ -39,8 +54,8 @@ function NavigationBar({ toggleDiscussModal }) {
           <Link
             to="/"
             className={`hover:bg-[#1c1c1c] py-5 ${
-              showBackButton ? 'px-5' : 'px-8'
-            } rounded-lg transition-all duration-300`}
+              showBackButton ? 'max-[968px]:px-5' : 'max-[968px]:px-7'
+            } ${showBackButton ? 'px-5' : 'px-8'} rounded-lg transition-all duration-150`}
           >
             {active === '/' ? (
               <svg
@@ -79,8 +94,8 @@ function NavigationBar({ toggleDiscussModal }) {
           <Link
             to="/search"
             className={`hover:bg-[#1c1c1c] py-5 ${
-              showBackButton ? 'px-5' : 'px-8'
-            } rounded-lg transition-all duration-300`}
+              showBackButton ? 'max-[968px]:px-5' : 'max-[968px]:px-7'
+            } ${showBackButton ? 'px-5' : 'px-8'} rounded-lg transition-all duration-150`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +121,8 @@ function NavigationBar({ toggleDiscussModal }) {
           <button
             onClick={toggleDiscussModal}
             className={`hover:bg-[#1c1c1c] py-5 ${
-              showBackButton ? 'px-5' : 'px-8'
-            } rounded-lg transition-all duration-300`}
+              showBackButton ? 'max-[968px]:px-5' : 'max-[968px]:px-7'
+            } ${showBackButton ? 'px-5' : 'px-8'} rounded-lg transition-all duration-150`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,8 +139,8 @@ function NavigationBar({ toggleDiscussModal }) {
           <Link
             to="/leaderboard"
             className={`hover:bg-[#1c1c1c] py-5 ${
-              showBackButton ? 'px-5' : 'px-8'
-            } rounded-lg transition-all duration-300`}
+              showBackButton ? 'max-[968px]:px-5' : 'max-[968px]:px-7'
+            } ${showBackButton ? 'px-5' : 'px-8'} rounded-lg transition-all duration-150`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -142,8 +157,8 @@ function NavigationBar({ toggleDiscussModal }) {
             <Link
               to="/profile"
               className={`hover:bg-[#1c1c1c] py-5 ${
-                showBackButton ? 'px-5' : 'px-8'
-              } rounded-lg transition-all duration-300`}
+                showBackButton ? 'max-[968px]:px-5' : 'max-[968px]:px-7'
+              } ${showBackButton ? 'px-5' : 'px-8'} rounded-lg transition-all duration-150`}
             >
               {active === '/profile' ? (
                 <svg
@@ -186,8 +201,8 @@ function NavigationBar({ toggleDiscussModal }) {
             <Link
               to="/login"
               className={`hover:bg-[#1c1c1c] py-5 ${
-                showBackButton ? 'px-5' : 'px-8'
-              } rounded-lg transition-all duration-300`}
+                showBackButton ? 'max-[968px]:px-5' : 'max-[968px]:px-7'
+              } ${showBackButton ? 'px-5' : 'px-8'} rounded-lg transition-all duration-150`}
             >
               <FaSignInAlt
                 className={`mt-[2px] text-[27px] ${
@@ -203,11 +218,15 @@ function NavigationBar({ toggleDiscussModal }) {
         </ul>
       </div>
 
-      <a href="https://github.com/WahyuIndG/Opinion-App" target="blank">
-        <TfiGithub className="text-[28px] text-dkText mr-2" />
+      <a
+        href="https://github.com/WahyuIndG/Opinion-App"
+        target="blank"
+        className="text-dkinactive hover:text-dkText transition-all duration-100"
+      >
+        <TfiGithub className="text-[28px]  mr-2" />
       </a>
     </nav>
   );
 }
 
-export default NavigationBar;
+export default DesktopNavbar;

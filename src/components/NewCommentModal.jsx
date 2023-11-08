@@ -26,7 +26,7 @@ function NewCommentModal({ showModal, onCloseModal, post, actionThunk }) {
         showModal ? 'visible bg-[rgba(0,0,0,0.60)] ' : 'invisible'
       }`}
     >
-      <div className="w-[580px]">
+      <div className="w-full max-w-[580px] px-4">
         <h1 className="text-center mb-4 font-semibold">Reply Opinion</h1>
         <NewCommentForm
           showModal={showModal}

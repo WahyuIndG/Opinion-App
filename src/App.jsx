@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import HomePage from './pages/HomePage';
-import NavigationBar from './components/NavigationBar';
 import NewDiscussModal from './components/NewDiscussModal';
 import SearchPage from './pages/SearchPage';
 import LeaderboardPage from './pages/LeaderboardPage';
@@ -13,13 +12,16 @@ import DetailPage from './pages/DetailPage';
 import { setAuthUserAsyncThunk } from './states/authUser/action';
 import NotFoundPage from './pages/NotFoundPage';
 import Loading from './components/Loading';
+import MobileNavBar from './components/MobileNavBar';
+import DesktopNavbar from './components/DesktopNavBar';
+import BottomNavBar from './components/BottomNavBar';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
+  const authUser = useSelector((states) => states.authUser);
   const dispatch = useDispatch();
-  const { authUser } = useSelector((states) => states);
 
   const toggleDiscussModal = () => {
     if (authUser === null) {
@@ -37,11 +39,12 @@ function App() {
     <>
       <Loading />
       <div className="min-h-screen bg-dkBackground text-dkText font-poppins">
-        <div className="max-w-7xl m-auto px-4">
-          <header className="fixed top-0 left-0 right-0 bg-[rgba(16,16,16,0.8)] backdrop-blur-md">
-            <NavigationBar toggleDiscussModal={toggleDiscussModal} />
+        <div className="w-full md:max-w-7xl m-auto ">
+          <header className="fixed top-0 left-0 right-0 ">
+            <DesktopNavbar toggleDiscussModal={toggleDiscussModal} />
+            <MobileNavBar />
           </header>
-          <main className="max-w-[570px] m-auto pt-20">
+          <main className="max-[768px]:w-full max-[968px]:w-[500px] w-[570px] max-[768px]:px-4 pt-20 m-auto">
             <Routes>
               <Route path="/" element={<HomePage toggleDiscussModal={toggleDiscussModal} />} />
               <Route path="/post/:postId" element={<DetailPage />} />
@@ -55,6 +58,9 @@ function App() {
             </Routes>
             <NewDiscussModal showModal={showModal} onClose={toggleDiscussModal} />
           </main>
+          <footer className="md:hidden block fixed z-10 bottom-0 left-0 right-0">
+            <BottomNavBar toggleDiscussModal={toggleDiscussModal} />
+          </footer>
         </div>
       </div>
     </>

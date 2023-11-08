@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 function User({ id, name, email, avatar }) {
   return (
-    <Link to={`/search/${id}`} className="flex gap-6 border-b-[1px] border-dkinactive py-6">
+    <Link
+      to={`/search/${id}`}
+      className="flex gap-6 border-b-[1px] border-[rgba(84,84,84,0.50)] py-6"
+    >
       <img src={avatar} alt="user" className="w-16 h-16 rounded-full" />
 
       <div className="w-full flex justify-between items-center">

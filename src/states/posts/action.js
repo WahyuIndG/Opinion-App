@@ -52,7 +52,7 @@ export function createPostAsyncThunk(post) {
       alert(error?.response?.data?.message);
     }
 
-    dispatch(showLoading());
+    dispatch(hideLoading());
   };
 }
 
@@ -215,13 +215,17 @@ export function addCommentPostAsyncThunk(postId, content) {
 
     axios
       .post(`/threads/${postId}/comments`, JSON.stringify({ content }), {
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${getAccessToken()}` },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
       })
       .catch((error) => {
         console.error(error);
         dispatch(posts);
+      })
+      .finally(() => {
+        dispatch(hideLoading());
       });
-
-    dispatch(hideLoading());
   };
 }

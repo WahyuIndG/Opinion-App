@@ -9,7 +9,7 @@ import {
 } from '../states/postDetail/action';
 
 function Comment({ id, content, owner, upVotesBy, downVotesBy, createdAt }) {
-  const { authUser } = useSelector((state) => state);
+  const authUser = useSelector((state) => state.authUser);
   const dispatch = useDispatch();
 
   const options = {

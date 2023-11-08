@@ -10,9 +10,9 @@ export default function TagDropdown({ selectHandler, selected, categories }) {
   };
 
   return (
-    <aside className="fixed left-10 bottom-9">
+    <aside className="fixed left-[50%] translate-x-[-50%] md:translate-x-0 md:left-10 bottom-20 md:bottom-9 flex flex-col items-center md:items-start gap-3">
       <ul
-        className={`w-fit bg-dkSecondary rounded-xl p-2 flex flex-col gap-2 border-1 border-[rgba(76,76,76,0.2)] mb-4 ${
+        className={`w-fit bg-dkSecondary rounded-xl p-2 flex flex-col gap-2 border-1 border-[rgba(76,76,76,0.2)]  ${
           dropdown ? 'visible' : 'hidden'
         }`}
       >

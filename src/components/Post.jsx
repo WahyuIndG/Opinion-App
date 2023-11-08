@@ -63,7 +63,7 @@ function Post({
 
   return (
     <div
-      className="flex justify-start pt-[14px] pb-[20px] gap-[12px] border-b border-dkinactive"
+      className="flex justify-start pt-[14px] pb-[20px] gap-[12px] border-b border-[rgba(84,84,84,0.50)]"
       onClick={onPostClickedHandler}
     >
       <img src={owner?.avatar} className="w-[38px] h-[38px] rounded-full" alt="c" title="image" />
@@ -74,7 +74,7 @@ function Post({
         </header>
         <main className="flex flex-col pt-1 pb-5">
           <h1 className="font-semibold">{title}</h1>
-          <div className="text-sm font-light mt-1">{parser(body, options)}</div>
+          <div className="post__body text-sm font-light mt-1">{parser(body, options)}</div>
         </main>
         <footer className="flex justify-between">
           <div className="flex gap-4">
