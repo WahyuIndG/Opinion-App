@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 100;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-Thin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 200;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-ExtraLight.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 300;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-Light.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-Medium.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-SemiBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-Bold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 800;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-ExtraBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 900;
+  src: local('Poppins'), url(/Public/Fonts/Poppins/Poppins-Black.woff2) format('woff2');
+}
+
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  --light: #e8edf1;
+  --dark: #28292c;
+}
+
+/* background dark unchecked*/
+.switch-label {
+  background-color: var(--dark);
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid var(--dark);
+}
+
+.checkbox {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* background light checked*/
+.checkbox:checked ~ .slider {
+  background-color: var(--light);
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 10px -6px 0px 0px var(--light);
+  background-color: var(--dark);
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider::before {
+  transform: translateX(28px);
+  background-color: var(--dark);
+  box-shadow: none;
+}
+
+/* helper */
+
+body::before {
+  content: 'XS';
+  color: red;
+  font-size: 2rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+[contentEditable][data-placeholder]:empty:before {
+  content: attr(data-placeholder);
+  color: #545454;
+}
+
+[contentEditable][data-placeholder]:focus::before {
+  color: #717070;
+}
+
+@media (min-width: 640px) {
+  body::before {
+    content: 'SM';
+    color: red;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}
+@media (min-width: 768px) {
+  body::before {
+    content: 'MD';
+    color: red;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}
+@media (min-width: 1024px) {
+  body::before {
+    content: 'LG';
+    color: red;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}
+@media (min-width: 1280px) {
+  body::before {
+    content: 'XL';
+    color: red;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}
+@media (min-width: 1536px) {
+  body::before {
+    content: '2XL';
+    color: red;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}

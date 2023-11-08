@@ -1,0 +1,36 @@
+/* eslint-disable no-sparse-arrays */
+export const threads = [
+  {
+    id: 'thread-1',
+    title: 'Thread Pertama',
+    body: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur culpa impedit numquam neque fugiat architecto laborum animi nisi.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur culpa impedit numquam neque fugiat architecto laborum animi nisi. ',
+    category: 'Kuliner',
+    createdAt: '2021-06-21T07:00:00.000Z',
+    ownerName: 'Jokowi Dodo',
+    upVotesBy: ['kosongan', 'nih'],
+    downVotesBy: ['apaan', 'sih', 'kok', 'gitu'],
+    totalComments: 5,
+  },
+  {
+    id: 'thread-2',
+    title: 'Saya Nyapres Lagi Loh !',
+    body: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur culpa impedit numquam neque fugiat architecto laborum animi nisi. Numquam aliquam iste iure dolores praesentium facilis officia ex porro tenetur ',
+    category: 'Politik',
+    createdAt: '2023-07-30T07:00:00.000Z',
+    ownerName: 'Prabowo Subianto',
+    upVotesBy: ['aminudin'],
+    downVotesBy: ['siapa', 'aja', 'boleh', 'nyapres'],
+    totalComments: 37,
+  },
+  {
+    id: 'thread-3',
+    title: 'Program Merdeka Belajar',
+    body: 'Lorem, ipsum dolor sit amet cons architecto laboruuam aliquam iste iure dolores praesentium facilis officia ex  Lorem, ipsum dolor sit amet cons architecto labor Lorem, ipsum dolor sit amet cons architecto laboruuam aliquam iste iure dolores praesentium facilis officia ex  Lorem, ipsum dolor sit amet cons architecto laboruuam aliquam iste iure dolores praesentium facilis officia ex uuam aliquam iste iure dolores praesentium facilis officia ex  porro tenetur ',
+    category: 'Music',
+    createdAt: '2023-08-04T07:00:00.000Z',
+    ownerName: 'Anies Baswedan',
+    upVotesBy: [1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, , 2],
+    downVotesBy: [1, 1, 1, 1, 1, 1, , 1, 1, 11],
+    totalComments: 99,
+  },
+];
